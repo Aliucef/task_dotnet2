@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model task_dotnet.Models.AddCategoryViewModel
+
+
+<h1>Add Category</h1>
+
+<form method="post">
+
+
+
+<div class="mt-3">
+    <label class="form-label">Category Name</label>
+        <input type="text" class="form-control" asp-for="CategoryName" />
+</div>
+
+
+
+
+<div class="mt-3">
+    <button type="submit" class="btn btn-primary"> save </button>
+
+</div>
+    <div>
+        <a class="btn btn-primary" asp-controller="Categories" asp-action="List">Return</a>
+    </div>
+</form>

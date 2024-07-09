@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+@model IEnumerable<task_dotnet.Models.Entities.SubSubCategory>
+
+<h1>SubSubCategories List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>SubSubCategory Name</th>
+            <th>SubCategory</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var subSubCategory in Model)
+        {
+            <tr>
+                <td>@subSubCategory.SubSubCategoryName</td>
+                <td>@subSubCategory.SubCategory?.SubCategoryName</td>
+                <td>@subSubCategory.SubCategory?.Category?.CategoryName</td>
+                <td>
+                    <a asp-controller="SubSubCategories" asp-action="Edit" asp-route-id="@subSubCategory.Id">Edit</a> |
+                    <form asp-controller="SubSubCategories" asp-action="Delete" asp-route-id="@subSubCategory.Id" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="btn btn-link" onclick="return confirm('Are you sure you want to delete this sub-subcategory?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a class="btn btn-primary" asp-controller="SubSubCategories" asp-action="Add">Add SubSubCategory</a>
+</div>
